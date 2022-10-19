@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home' %}">Flight Reservation System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto" >
+            {% if request.user.is_active %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: black; font-family: corbel">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_bookings' %}" style="color: black; font-family: corbel" >Bookings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{% url 'signout' %}" style="color: black; font-family: corbel">Sign out</a>
+                </li>
+            
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: black; font-family: corbel">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{% url 'signup' %}" style="color: black; font-family: corbel">SignUp</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{% url 'signin' %}" style="color: black; font-family: corbel">SignIn</a>
+                </li>
+            
+            {% endif %}
+        </ul>
+    </div>
+</nav>

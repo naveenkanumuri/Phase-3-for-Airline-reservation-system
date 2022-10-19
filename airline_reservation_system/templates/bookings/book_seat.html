@@ -1,0 +1,54 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 mx-auto">
+            <form action="{% url 'booking_details' %}" method="POST">
+                <h2>Book Flight</h2>
+                <div class="container">
+                    {% csrf_token %}
+                    <label for="flight_id">Flight ID:</label>
+                    <input readonly name='flight_id' class="form-control"
+                        style="color: #9d9d9d;" type="text"
+                        value="{{flight.id}}">
+                    <label for="flight_name">Flight Name:</label>
+                    <input readonly name='flight_name' class="form-control"
+                        style="color: #9d9d9d;" type="text"
+                        value="{{flight.flight_name}}">
+
+                    <label for="flight_source">Source:</label>
+                    <input readonly name='flight_name' class="form-control"
+                        style="color: #9d9d9d;" type="text"
+                        value="{{flight.source}}">
+
+                    <label for="flight_destination">Destination:</label>
+                    <input readonly name='flight_name' class="form-control"
+                        style="color: #9d9d9d;" type="text"
+                        value="{{flight.destination}}">
+
+                    <label for="flight_rem_seats">Remaining Seats:</label>
+                    <input readonly name='flight_name' class="form-control"
+                        style="color: #9d9d9d;" type="text"
+                        value="{{flight.remaining_seats}}">
+
+                    <label for="flight_name">Price:</label>
+                    <input readonly name='flight_name' class="form-control"
+                        style="color: #9d9d9d;" type="text"
+                        value="{{flight.price}}">
+
+                    <label for="no_seats">Number of seats:</label>
+                    <input name='no_seats' class="form-control" type="number"
+                        min="1" value="1">
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-success float-right"
+                    name="book" value="Book Flight">Book Flight</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

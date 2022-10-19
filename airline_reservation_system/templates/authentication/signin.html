@@ -1,0 +1,28 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-sm-6 mx-auto" style="margin-top: 20px">
+            <center><h5 style="margin-top: 20px;"class="bg-secondary text-white">Welcome to Flight Reservation System</h5></center>
+                <form action="{% url 'signin' %}" method="post">
+                    <!--Login--> 
+                    <h2>Log in</h2>
+                    <div class="container">
+                            {% csrf_token %}
+                            {% for fm in form %}
+                                {{ fm.label_tag }} {{ fm }} <br>
+                                {% if fm.errors %} 
+                                <li class="alert alert-danger">{{ fm.errors|striptags }}</li>
+                                {% endif %}
+                            {% endfor %}                
+                        <p class="text-center">If you do not have an account, <a href="{% url 'signup' %}">Register or Signup</a> instead.</p>
+                        <button class="btn btn-success float-right" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

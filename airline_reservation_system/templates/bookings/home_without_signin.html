@@ -1,0 +1,21 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+
+
+<div class="container">
+      <div class="row">
+          <div class="col-sm-6 mx-auto" style="margin-top: 20px">
+            <center><h5 style="margin-top: 20px;"class="bg-secondary text-white">Welcome to Flight Reservation System</h5></center>
+            <main role="main" class="inner cover">
+              <h1 class="cover-heading">Life Is Short And The World Is Wide.</h1>
+              <p class="lead">To get the best of your adventure you just need to leave and go where you like, we are waiting for you.</p><br><br>
+              <p class="lead">
+                <a href="{% url 'signup' %}" class="btn btn-lg btn-secondary float-left">Signup</a>
+                <a href="{% url 'signin' %}" class="btn btn-lg btn-secondary float-right">SignIn</a>
+              </p>
+            </main>
+          </div>
+      </div>
+  </div>
+  
+{% endblock %}

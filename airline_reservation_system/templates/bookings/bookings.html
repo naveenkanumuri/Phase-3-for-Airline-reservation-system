@@ -1,0 +1,52 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mx-auto" style="margin-top: 20px">
+            <center><h5 class="bg-secondary text-white">Hi {{username}}, Welcome to Flight Reservation System</h5></center>
+            <h2>List of Flights booked</h2>
+            <div style="overflow-x:auto;">
+                <table class="table table-striped">
+                    <thead style="background-color: blue;color: white;">
+                        <td>BOOKING ID</td>
+                        <td>USER NAME</td>
+                        <td>FLIGHT NAME</td>
+                        <td>SOURCE</td>
+                        <td>DESTINATION</td>
+                        <td>NUM OF SEATS</td>
+                        <td>PRICE</td>
+                        <td>DATE</td>
+                        <td>TIME</td>
+                        <td>STATUS</td>
+                        <td>CANCEL</td>
+                    </thead>
+
+                    {% for booking in bookings %}
+                    <form action="{% url 'cancelling' booking.id %}" method="POST">
+                        {% csrf_token %}
+                        {% if booking.no_of_seats %}
+                        <tr>
+                            <td>{{booking.id}}</td>
+                            <td>{{booking.name}}</td>
+                            <td>{{booking.flight_name}}</td>
+                            <td>{{booking.source}}</td>
+                            <td>{{booking.destination}}</td>
+                            <td>{{booking.no_of_seats}}</td>
+                            <td>{{booking.price}}</td>
+                            <td>{{booking.date}}</td>
+                            <td>{{booking.time}}</td>
+                            <td>{{booking.status}}</td>
+                            <td><button class="btn btn-success float-right" type="submit">CANCEL</button></td>
+                        </tr>  
+                        {% endif %}
+                    </form>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mx-auto" style="margin-top: 20px">
+            <center><h5 class="bg-secondary text-white">Hi {{username}}, Welcome to Flight Reservation System</h5></center>
+            <h3>List of Flights</h3>
+            <div style="overflow-x:auto;">
+                <table class="table" >
+                    <thead style="background-color: rgb(87, 87, 87);color: white;">
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>SOURCE</th>
+                            <th>DESTINATION</th>
+                            <th>NUM OF SEATS</th>
+                            <th>REMAINING SEATS</th>
+                            <th>PRICE</th>
+                            <th>DATE</th>
+                            <th>TIME</th>
+                            <th>BOOK FLIGHT</th>
+                        </tr>
+                        
+                    </thead>
+
+                    {% for flight in flights %}
+                        <tbody>
+                        <tr>
+                            <th>{{flight.id }}</th>
+                            <th>{{flight.flight_name}}</th>
+                            <th>{{flight.source}}</th>
+                            <th>{{flight.destination}}</th>
+                            <th>{{flight.no_of_seats}}</th>
+                            <th>{{flight.remaining_seats}}</th>
+                            <th>{{flight.price}}</th>
+                            <th>{{flight.date}}</th>
+                            <th>{{flight.time}}</th>
+                            {% if flight.remaining_seats %}
+                                <th><a href="{% url 'book_seats' flight.id %}" class="btn btn-success float-left">Book flight</a></th>
+                            {% else %}
+                                <th><a href="{% url 'book_seats' flight.id %}" class="btn btn-success float-left" disabled>Book flight</a></th>
+                            {% endif %}
+                        </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-sm-8 mx-auto" style="margin-top: 20px">
+                <form action="{% url 'signup' %}" method="post">
+                    <h2>Sign up!</h2>
+                    <!--Register--> 
+                    <div class="container">
+                            {% csrf_token %}
+                            {% for fm in form %}
+                                {{ fm.label_tag }} {{ fm }} <br>
+                                {% if fm.errors %} 
+                                <li class="alert alert-danger">{{ fm.errors|striptags }}</li>
+                                {% endif %}
+                            {% endfor %}                
+                        <p class="text-center">If you already have an account, 
+                            <a href="{% url 'signin' %}">login</a> instead.
+                        </p>
+                        <button class="btn btn-success float-right" type="submit">Signup</button>
+                    </div>
+                </form>
+                <div >
+            </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
